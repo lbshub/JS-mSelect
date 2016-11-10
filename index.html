@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>日期 | 时间 | 自定义</title>
+
+    <style type="text/css">
+    *{margin: 0; padding: 0;}
+    body{background: #f1f1f1;}
+
+    .text{padding: 0 10px; height: 50px; margin:20px 0;}
+    .text span{display: block; width: 100%; padding:0 5px; height: 50px; line-height: 50px; font-size: 18px; background: #fff; border-radius: 10px; -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+    </style>
+
+</head>
+<body>
+
+    <div class="text"><span class="date">选择日期</span></div>
+    <div class="text"><span class="time">选择时间</span></div>
+    <div class="text"><span class="age">选择年龄</span></div>
+    <div class="text"><span class="all">选择一项</span></div>
+
+    <script type="text/javascript" src="mSelect.js"></script>
+    <script type="text/javascript">
+
+        // 日期选择
+        var date = document.querySelector('.date');
+        var ds = new mSelect({
+            mode: 'date',
+            title: '选择日期',
+            select: function(arr) {
+                date.innerHTML = arr.join('-');
+            }
+        });
+        date.addEventListener('click', function() {
+            ds.show();
+        });
+
+        // 时间选择
+        var time = document.querySelector('.time');
+        var ts = new mSelect({
+            mode: 'time',
+            select: function(arr) {
+                // time.innerHTML = arr.join(':');
+                time.innerHTML = arr[0] + ':' + (arr[1] > 10 ? arr[1] : '0' + arr[1]);
+            }
+        });
+        time.addEventListener('click', function() {
+            ts.show();
+        });
+
+        // 年龄选择
+        var ageData = [{
+            name: '岁',
+            list: mSelect.number(18, 48)
+        }];
+        var age = document.querySelector('.age');
+        var as = new mSelect({
+            data: ageData,
+            align: 'center',
+            title: '您的年龄',
+            select: function(arr) {
+                age.innerHTML = arr.join('') + '岁';
+            }
+        });
+        age.addEventListener('click', function() {
+            as.show();
+        });
+
+        // 杂项选择
+        var allData = [{
+            list: ['你', '我', '他', '你们', '我们', '他们']
+        }, {
+            list: ['是', '不是', '应该是', '一定是']
+        }, {
+            list: ['大', '小']
+        }, {
+            list: ['混蛋', '傻瓜', '白痴']
+        }];
+        var all = document.querySelector('.all');
+        var ms = new mSelect({
+            data: allData,
+            select: function(arr) {
+                all.innerHTML = arr.join('');
+            }
+        });
+        all.addEventListener('click', function() {
+            ms.show();
+        });    
+
+    </script>
+
+</body>
+</html>
