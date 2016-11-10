@@ -89,7 +89,6 @@ all.addEventListener('click', function() {
 * opts.footClass 底部标签类名 默认'mSelect-foot'
 * opts.defineClass 确定按钮标签类名 默认'mSelect-define'
 * opts.cancelClass 取消按钮标签类名 默认'mSelect-cancel'
-* ****************************************************
 * *选项 方法*
 * opts.select 点击确定后执行函数
 * ===================================================
