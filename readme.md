@@ -5,6 +5,10 @@
 
 
 ### 使用
+引入JS文件 css文件自动加载（默认路径与js文件同目录）
+```html
+<script type="text/javascript" src="mSelect.js"></script>
+```
 
 ##### 日期选择 
 ```js
